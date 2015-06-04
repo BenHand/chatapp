@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   post "''", to: 'chat_room#create_user'
   post '/chat', to: 'chat_room#post_msg'
-  # TODO: post /chat to send new messages
+
   root to: 'chat_room#index'
 end
-""
+
