@@ -5,7 +5,7 @@ class CreateChatRoom < ActiveRecord::Migration
       t.string :msg, default: ''
       t.string :room, default: 'global'
 
-      t.timestamp null: false
+      t.timestamps null: false
     end
   end
 end
