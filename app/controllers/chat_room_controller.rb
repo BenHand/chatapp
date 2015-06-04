@@ -33,7 +33,7 @@ class ChatRoomController < ApplicationController
   end
 
   def leaderboard
-    grouped_users = ChatRoom.group(:username).order(msg: :desc).limit(5).count(:msg).sum(:msg)
-    render json: grouped_users.inspect
+    grouped_users = ChatRoom.group(:username).order(msg: :desc).limit(5).count(:msg)
+    render json: grouped_users
   end
 end
