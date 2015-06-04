@@ -3,9 +3,8 @@ Rails.application.routes.draw do
   get '/chat', to: 'chat_room#index' # getting all messages w/in last 4 hours
   get '/chat/profile/:username', to: 'chat_room#profile'
 
-  # TODO: "''" post to create new username
-  post "''", to: 'chat_room#create'
-
+  post "''", to: 'chat_room#create_user'
+  post '/chat', to: 'chat_room#post_msg'
   # TODO: post /chat to send new messages
   root to: 'chat_room#index'
 end
