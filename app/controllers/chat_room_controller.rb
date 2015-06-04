@@ -6,7 +6,7 @@ class ChatRoomController < ApplicationController
     recent_msg = []
     all_msg.each do |item|
 
-      if (current_time - item.created_at) <= 300
+      if (current_time - item.created_at) <= 300000
         recent_msg << item
       end
     end
