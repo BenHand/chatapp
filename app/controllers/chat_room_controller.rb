@@ -9,8 +9,8 @@ class ChatRoomController < ApplicationController
     render json: user
   end
 
-  # def create
-
-  # end
+  def create
+    ChatRoom.create(username: params[:username], msg: params[:msg])
+  end
 
 end
