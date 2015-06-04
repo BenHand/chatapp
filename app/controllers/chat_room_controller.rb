@@ -4,8 +4,8 @@ class ChatRoomController < ApplicationController
     current_time = Time.now
     all_msg = ChatRoom.all
     recent_msg = []
-    all_msg.each do |item|
 
+    all_msg.each do |item|
       if (current_time - item.created_at) <= 300000
         recent_msg << item
       end
@@ -30,5 +30,10 @@ class ChatRoomController < ApplicationController
 
   def history
     render json: ChatRoom.all
+  end
+
+  def leaderboard
+    grouped_users = ChatRoom.group(:username).order(msg: :desc).limit(5).count(:msg).sum(:msg)
+    render json: grouped_users.inspect
   end
 end
