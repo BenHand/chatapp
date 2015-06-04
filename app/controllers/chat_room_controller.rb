@@ -2,7 +2,15 @@ class ChatRoomController < ApplicationController
 
   def index
     current_time = Time.now
-    render json: ChatRoom.all
+    all_msg = ChatRoom.all
+    recent_msg = []
+    all_msg.each do |item|
+
+      if (current_time - item.created_at) <= 300
+        recent_msg << item
+      end
+    end
+    render json: recent_msg
   end
 
   def profile
@@ -20,4 +28,7 @@ class ChatRoomController < ApplicationController
     render json: new_msg
   end
 
+  def history
+    render json: ChatRoom.all
+  end
 end
