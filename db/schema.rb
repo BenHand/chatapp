@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150604195231) do
+ActiveRecord::Schema.define(version: 20150604221354) do
 
   create_table "chat_rooms", force: :cascade do |t|
-    t.string   "username",   default: "anonymous", null: false
-    t.string   "msg",        default: ""
+    t.string   "username",   default: "anonymous",                null: false
+    t.string   "msg",        default: "has entered the chatroom"
     t.string   "room",       default: "global"
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
   end
 
 end
