@@ -48,8 +48,13 @@ class ChatRoomController < ApplicationController
     else
       room = 'global'
     end
-    new_msg = ChatRoom.create(username: params[:username], msg: params[:msg], room: room)
-    render json: new_msg
+    swear_words = ["shit", "fuck", "ass", "bitch"]
+    if swear_words.include?(params[:msg])
+      new_msg = ChatRoom.create(username: params[:username], msg: "!*****!", room: room)
+      render json: new_msg
+    else
+      new_msg = ChatRoom.create(username: params[:username], msg: params[:msg], room: room)
+    end
   end
 
   def history
@@ -57,13 +62,19 @@ class ChatRoomController < ApplicationController
   end
 
   def leaderboard
-    chatroom = ChatRoom.all.group_by { |room| room.username }
+    chatroom = []
+    msgcount = []
+    users = ChatRoom.all.group_by { |room| room.username }
                            .sort_by { |username, msg| msg.count }
                            .reverse
                            .take(10)
                            .map { |rooms| rooms.first }
                            #.bopit
-    render json: chatroom
+        users.each do |name|
+          msgcount << ChatRoom.where(username: name).count
+        end
+      array_zip = users.zip(msgcount)
+    render json: array_zip
   end
 
   def recent_users
@@ -81,16 +92,17 @@ class ChatRoomController < ApplicationController
     render json: recent_users
   end
 
-  def all_rooms
-    chatrooms = ChatRoom.all.group_by { |room| room.room }
-                        .sort_by { |room| room.count }
-                        .map { |rooms| rooms.first }
-    render json: chatrooms
-  end
+  # def all_rooms
+  #   chatrooms = ChatRoom.all.group_by { |room| room.room }
+  #                       .sort_by { |room| room.count }
+  #                       .map { |rooms| rooms.first }
+  #   render json: chatrooms
+  # end
 
   def most_active_rooms
     chatrooms = ChatRoom.all.group_by { |room| room.room }
                         .sort_by { |room| room.count }
+                        .reverse
                         .take(3)
                         .map { |rooms| rooms.first }
     render json: chatrooms
