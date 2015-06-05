@@ -8,6 +8,10 @@ Rails.application.routes.draw do
 
   get '/leaderboard', to: 'chat_room#leaderboard'
   get '/recent', to: 'chat_room#recent_users'
+
+  get '/recent/user/:time', to: "chat_room#recent_users"
+  get '/recent/:time',  to: 'chat_room#index'
+
   get '/most_active_rooms', to: 'chat_room#most_active_rooms'
   # get '/all_rooms', to: 'chat_room#all_rooms'
 

@@ -5,8 +5,14 @@ class ChatRoomController < ApplicationController
     all_msg = ChatRoom.where(room: 'global')
     recent_msg = []
 
+    if params[:time].present?
+      time_window = params[:time]
+    else
+      time_window = 300
+    end
+
     all_msg.each do |item|
-      if (current_time - item.created_at) <= 300
+      if (current_time - item.created_at) <= time_window.to_i
         recent_msg << item
       end
     end
@@ -55,7 +61,7 @@ class ChatRoomController < ApplicationController
   end
 
   def history
-    render json: ChatRoom.all
+    render json: ChatRoom.all.reverse
   end
 
   def leaderboard
@@ -79,8 +85,14 @@ class ChatRoomController < ApplicationController
     all_users = ChatRoom.all
     recent_users = []
 
+    if params[:time].present?
+      time_window = params[:time]
+    else
+      time_window = 14400
+    end
+
     all_users.each do |item|
-      if (current_time - item.created_at) <= 14400
+      if (current_time - item.created_at) <= time_window.to_i
         if recent_users.include?(item.username) == false
           recent_users << item.username
         end
