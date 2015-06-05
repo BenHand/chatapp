@@ -37,7 +37,7 @@ class ChatRoomController < ApplicationController
   end
 
   def create_user
-    new_user = ChatRoom.create(username: params[:username])
+    new_user = ChatRoom.create(username: params[:username], room: params[:room])
     render json: new_user.username
   end
 
