@@ -24,7 +24,12 @@ class ChatRoomController < ApplicationController
   end
 
   def post_msg
-    new_msg = ChatRoom.create(username: params[:username], msg: params[:msg])
+    if params[:room].present?
+      room = params[:room]
+    else
+      room = 'global'
+    end
+    new_msg = ChatRoom.create(username: params[:username], msg: params[:msg], room: room)
     render json: new_msg
   end
 
