@@ -6,7 +6,7 @@ class ChatRoomController < ApplicationController
     recent_msg = []
 
     all_msg.each do |item|
-      if (current_time - item.created_at) <= 300000
+      if (current_time - item.created_at) <= 300
         recent_msg << item
       end
     end
@@ -33,13 +33,12 @@ class ChatRoomController < ApplicationController
   end
 
   def leaderboard
-    # grouped_users = ChatRoom.group(:username).order(msg: :desc).count(:msg).limit(5)
-    # render json: grouped_users
     chatroom = ChatRoom.all.group_by { |room| room.username }
                            .sort_by { |username, msg| msg.count }
                            .reverse
                            .take(10)
                            .map { |rooms| rooms.first }
+                           #bopit
     render json: chatroom
    end
 end
