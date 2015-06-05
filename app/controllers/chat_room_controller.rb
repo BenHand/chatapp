@@ -48,13 +48,8 @@ class ChatRoomController < ApplicationController
     else
       room = 'global'
     end
-    swear_words = ["shit", "fuck", "ass", "bitch"]
-    if swear_words.include?(params[:msg])
-      new_msg = ChatRoom.create(username: params[:username], msg: "!*****!", room: room)
-      render json: new_msg
-    else
-      new_msg = ChatRoom.create(username: params[:username], msg: params[:msg], room: room)
-    end
+    new_msg = ChatRoom.create(username: params[:username], msg: Swearjar.default.censor(params[:msg]), room: room)
+    render json: new_msg
   end
 
   def history
