@@ -40,5 +40,19 @@ class ChatRoomController < ApplicationController
                            .map { |rooms| rooms.first }
                            #bopit
     render json: chatroom
-   end
+  end
+
+  def recent_users
+    current_time = Time.now
+    all_users = ChatRoom.all
+    recent_users = []
+
+    all_users.each do |item|
+      if (current_time - item.created_at) <= 14400
+        recent_users << item.username
+      end
+    end
+    render json: recent_users
+  end
+
 end
