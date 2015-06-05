@@ -2,12 +2,7 @@ class ChatRoomController < ApplicationController
 
   def index
     current_time = Time.now
-    if params[:room].present?
-      all_msg = ChatRoom.where(room: params[:room])
-    else
-      all_msg = ChatRoom.where(room: 'global')
-    end
-
+    all_msg = ChatRoom.where(room: 'global')
     recent_msg = []
 
     all_msg.each do |item|
@@ -16,6 +11,24 @@ class ChatRoomController < ApplicationController
       end
     end
     render json: recent_msg
+  end
+
+  def which_room
+    recent_msg = []
+
+    if params[:room].present?
+      all_msg = ChatRoom.where(room: params[:room])
+    else
+      all_msg = ChatRoom.where(room: 'global')
+    end
+
+    all_msg.each do |item|
+      if (current_time - item.created_at) <= 300
+        recent_msg << item
+      end
+    end
+    render json: recent_msg
+
   end
 
   def profile
