@@ -38,7 +38,7 @@ class ChatRoomController < ApplicationController
                            .reverse
                            .take(10)
                            .map { |rooms| rooms.first }
-                           #bopit
+                           #.bopit
     render json: chatroom
   end
 
@@ -49,7 +49,9 @@ class ChatRoomController < ApplicationController
 
     all_users.each do |item|
       if (current_time - item.created_at) <= 14400
-        recent_users << item.username
+        if recent_users.include?(item.username) == false
+          recent_users << item.username
+        end
       end
     end
     render json: recent_users
