@@ -58,7 +58,7 @@ class ChatRoomController < ApplicationController
   end
 
   def most_active_rooms
-    chatrooms = ChatRoom.all.group_by { |room| room.chatroom }
+    chatrooms = ChatRoom.all.group_by { |room| room.room }
                         .sort_by { |room| room.count }
                         .reverse
                         .take(5)
