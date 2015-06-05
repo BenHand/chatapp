@@ -15,6 +15,7 @@ class ChatRoomController < ApplicationController
 
   def which_room
     recent_msg = []
+    current_time = Time.now
 
     if params[:room].present?
       all_msg = ChatRoom.where(room: params[:room])
