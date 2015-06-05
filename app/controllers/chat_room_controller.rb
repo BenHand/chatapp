@@ -59,11 +59,11 @@ class ChatRoomController < ApplicationController
 
   def most_active_rooms
     chatrooms = ChatRoom.all.group_by { |room| room.chatroom }
-                        .sort_by { |chatroom| chatroom.count }
+                        .sort_by { |room| room.count }
                         .reverse
                         .take(5)
                         .map { |rooms| rooms.first }
-    render json: rooms
+    render json: chatrooms
   end
 
 end
