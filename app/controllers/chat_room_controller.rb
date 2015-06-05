@@ -48,7 +48,9 @@ class ChatRoomController < ApplicationController
     else
       room = 'global'
     end
-    new_msg = ChatRoom.create(username: params[:username], msg: Swearjar.default.censor(params[:msg]), room: room)
+    new_msg = ChatRoom.create(username: params[:username],
+                                   msg: Swearjar.default.censor(params[:msg]),
+                                  room: room)
     render json: new_msg
   end
 
