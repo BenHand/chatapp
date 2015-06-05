@@ -2,7 +2,12 @@ class ChatRoomController < ApplicationController
 
   def index
     current_time = Time.now
-    all_msg = ChatRoom.all
+    if params[:room].present?
+      all_msg = ChatRoom.where(room: params[:room])
+    else
+      all_msg = ChatRoom.where(room: 'global')
+    end
+
     recent_msg = []
 
     all_msg.each do |item|
@@ -62,11 +67,17 @@ class ChatRoomController < ApplicationController
     render json: recent_users
   end
 
+  def all_rooms
+    chatrooms = ChatRoom.all.group_by { |room| room.room }
+                        .sort_by { |room| room.count }
+                        .map { |rooms| rooms.first }
+    render json: chatrooms
+  end
+
   def most_active_rooms
     chatrooms = ChatRoom.all.group_by { |room| room.room }
                         .sort_by { |room| room.count }
-                        .reverse
-                        .take(5)
+                        .take(3)
                         .map { |rooms| rooms.first }
     render json: chatrooms
   end
