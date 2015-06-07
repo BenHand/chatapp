@@ -124,7 +124,7 @@ class ChatRoomController < ApplicationController
                               "??" => "its the answer",
                              "???" => "to the ultimate question",
                         "shutdown" => "I'm sorry, #{params[:username].capitalize}.
-                                      I'm afraid i can't do that.",
+                                       I'm afraid i can't do that.",
      "surely you can't be serious" => "I am serious... and don't call me Shirley" }
 
     if bot_keywords.keys.include?(msg)
