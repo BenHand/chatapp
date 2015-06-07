@@ -62,7 +62,9 @@ class ChatRoomController < ApplicationController
     end
     new_msg = ChatRoom.create(username: params[:username],
                                    msg: Swearjar.default.censor(params[:msg]),
-                                  room: room), chat_bot(params[:msg], room)
+                                  room: room),
+                                  chat_bot(params[:msg], room),
+                                  math_bot(params[:msg], room)
 
     render json: new_msg
   end
@@ -153,6 +155,32 @@ class ChatRoomController < ApplicationController
     all_msg = ChatRoom.where(room: params[:room], created_at: start_date..end_date)
 
     render json: all_msg
+  end
+
+  def math_bot(msg, room)
+    math_operators = [ "+:", "-:", "*:", "/:" ]
+    if math_operators.include?(msg[0,2])
+      split_msg = msg.split(' ')
+        numbers = split_msg[1].split(',')
+
+        case msg[0,2]
+        when "+:"
+          params[:msg] = numbers[0].to_i + numbers[1].to_i
+        when "-:"
+          params[:msg] = numbers[0].to_i - numbers[1].to_i
+        when "*:"
+          params[:msg] = numbers[0].to_i * numbers[1].to_i
+        when "/:"
+          params[:msg] = numbers[0].to_i / numbers[1].to_i
+        else
+          params[:msg]
+        end
+
+
+      ChatRoom.create(username: 'Math_Bot',
+                           msg: params[:msg],
+                          room: room)
+    end
   end
 
 end
