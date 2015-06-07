@@ -16,7 +16,7 @@ class ChatRoomController < ApplicationController
         recent_msg << item
       end
     end
-    render json: recent_msg.reverse
+    render json: recent_msg
   end
 
   def which_room
@@ -73,10 +73,10 @@ class ChatRoomController < ApplicationController
                            .take(10)
                            .map { |rooms| rooms.first }
                            #.bopit
-        users.each do |name|
-          msgcount << ChatRoom.where(username: name).count
-        end
-      array_zip = users.zip(msgcount)
+    users.each do |name|
+      msgcount << ChatRoom.where(username: name).count
+    end
+    array_zip = users.zip(msgcount)
     render json: array_zip
   end
 
