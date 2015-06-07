@@ -56,7 +56,7 @@ class ChatRoomController < ApplicationController
     end
     new_msg = ChatRoom.create(username: params[:username],
                                    msg: Swearjar.default.censor(params[:msg]),
-                                  room: room), chat_bot(params[:msg])
+                                  room: room), chat_bot(params[:msg], params[:room])
 
     render json: new_msg
   end
@@ -118,7 +118,7 @@ class ChatRoomController < ApplicationController
     render json: chatrooms
   end
 
-  def chat_bot(msg)
+  def chat_bot(msg, room)
     user = params[:username].capitalize
     bot_keywords =    { "amiright" => "you are so right!",
                                "?" => "42",
@@ -131,7 +131,7 @@ class ChatRoomController < ApplicationController
     if bot_keywords.keys.include?(msg)
       ChatRoom.create(username: 'Chat_Bot',
                            msg: bot_keywords[msg],
-                          room: params[:room])
+                          room: room)
     end
   end
 
