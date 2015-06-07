@@ -2,7 +2,7 @@ class ChatRoomController < ApplicationController
 
   def index
     current_time = Time.now
-    all_msg = ChatRoom.where(room: 'global').order(:id)
+    all_msg = ChatRoom.where(room: 'Global').order(:id)
     recent_msg = []
 
     if params[:time].present?
@@ -136,7 +136,7 @@ class ChatRoomController < ApplicationController
   # def joke_bot
   #   jokes =
   # end
-  # def room_history
-  # end
+
+
 
 end
