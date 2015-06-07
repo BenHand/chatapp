@@ -24,9 +24,9 @@ class ChatRoomController < ApplicationController
     current_time = Time.now
 
     if params[:room].present?
-      all_msg = ChatRoom.where(room: params[:room])
+      all_msg = ChatRoom.where(room: params[:room]).order(:id)
     else
-      all_msg = ChatRoom.where(room: 'global')
+      all_msg = ChatRoom.where(room: 'Global').order(:id)
     end
 
     all_msg.each do |item|
