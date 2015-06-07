@@ -49,7 +49,6 @@ class ChatRoomController < ApplicationController
   end
 
   def post_msg
-    chat_bot(params[:msg])
     if params[:room].present?
       room = params[:room]
     else
@@ -57,7 +56,8 @@ class ChatRoomController < ApplicationController
     end
     new_msg = ChatRoom.create(username: params[:username],
                                    msg: Swearjar.default.censor(params[:msg]),
-                                  room: room)
+                                  room: room), chat_bot(params[:msg])
+
     render json: new_msg
   end
 
@@ -119,14 +119,24 @@ class ChatRoomController < ApplicationController
   end
 
   def chat_bot(msg)
-    bot_keywords = { "amiright" => "you are so right!",
-                            "?" => "42",
-                           "??" => "its the answer",
-                          "???" => "to the ultimate question" }
+    bot_keywords =    { "amiright" => "you are so right!",
+                               "?" => "42",
+                              "??" => "its the answer",
+                             "???" => "to the ultimate question",
+                        "shutdown" => "I'm sorry, #{params[:username].capitalize}.
+                                      I'm afraid i can't do that.",
+     "surely you can't be serious" => "I am serious... and don't call me Shirley" }
+
     if bot_keywords.keys.include?(msg)
-      params[:msg] = bot_keywords[msg]
+      ChatRoom.create(username: 'Chat_Bot',
+                           msg: bot_keywords[msg],
+                          room: params[:room])
     end
   end
+
+  # def joke_bot
+  #   jokes =
+  # end
   # def room_history
   # end
 
