@@ -29,8 +29,14 @@ class ChatRoomController < ApplicationController
       all_msg = ChatRoom.where(room: 'Global').order(:id)
     end
 
+    if params[:time].present?
+      time_window = params[:time]
+    else
+      time_window = 300
+    end
+
     all_msg.each do |item|
-      if (current_time - item.created_at) <= 300
+      if (current_time - item.created_at) <= time_window.to_i
         recent_msg << item
       end
     end
@@ -110,12 +116,19 @@ class ChatRoomController < ApplicationController
   # end
 
   def most_active_rooms
+    msgcount = []
     chatrooms = ChatRoom.all.group_by { |room| room.room }
                         .sort_by { |room| room.count }
                         .reverse
                         .take(3)
                         .map { |rooms| rooms.first }
-    render json: chatrooms
+
+    chatrooms.each do |room|
+      msgcount << ChatRoom.where(room: room).count
+      msgcount.sort!.reverse!
+    end
+    array_zip = chatrooms.zip(msgcount)
+    render json: array_zip
   end
 
   def chat_bot(msg, room)
