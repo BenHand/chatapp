@@ -147,4 +147,12 @@ class ChatRoomController < ApplicationController
     end
   end
 
+  def date_range
+    start_date = params[:start_date].to_datetime
+    end_date = params[:end_date].to_datetime
+    all_msg = ChatRoom.where(room: params[:room], created_at: start_date..end_date)
+
+    render json: all_msg
+  end
+
 end

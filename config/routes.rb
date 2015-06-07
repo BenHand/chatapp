@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get '/chat/history', to: 'chat_room#history'
 
   # getting all messages within a room from a start date to end date
-  # get '/chat/history/:room/:start_date/:end_date', to: 'chat_room#room_history'
+  get '/chat/history/:room/:start_date/:end_date', to: 'chat_room#date_range'
 
   #getting all messages from a specific user
   get '/chat/profile/:username', to: 'chat_room#profile'
