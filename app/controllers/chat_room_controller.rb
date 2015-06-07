@@ -2,7 +2,7 @@ class ChatRoomController < ApplicationController
 
   def index
     current_time = Time.now
-    all_msg = ChatRoom.where(room: 'global')
+    all_msg = ChatRoom.where(room: 'global').order(:id)
     recent_msg = []
 
     if params[:time].present?
@@ -34,7 +34,7 @@ class ChatRoomController < ApplicationController
         recent_msg << item
       end
     end
-    render json: recent_msg.reverse
+    render json: recent_msg
 
   end
 
@@ -61,7 +61,7 @@ class ChatRoomController < ApplicationController
   end
 
   def history
-    render json: ChatRoom.all.reverse
+    render json: ChatRoom.all.order(:id).reverse
   end
 
   def leaderboard
