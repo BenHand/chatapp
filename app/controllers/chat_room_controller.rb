@@ -136,6 +136,7 @@ class ChatRoomController < ApplicationController
                                "?" => "42",
                               "??" => "its the answer",
                              "???" => "to the ultimate question",
+                            "????" => "of Life, the Universe, and Everything.",
                         "shutdown" => "I'm sorry, #{params[:username].capitalize}. I'm afraid i can't do that.",
      "surely you can't be serious" => "I am serious... and don't call me Shirley" }
 
@@ -145,11 +146,5 @@ class ChatRoomController < ApplicationController
                           room: room)
     end
   end
-
-  # def joke_bot
-  #   jokes =
-  # end
-
-
 
 end
