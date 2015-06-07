@@ -34,7 +34,7 @@ class ChatRoomController < ApplicationController
         recent_msg << item
       end
     end
-    render json: recent_msg
+    render json: recent_msg.reverse
 
   end
 
