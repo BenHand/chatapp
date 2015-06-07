@@ -2,13 +2,15 @@ Rails.application.routes.draw do
   # TODO: "''/welcome" post to create new username
   get '/chat', to: 'chat_room#index' # getting all messages w/in last 4 hours
   get '/chat/history', to: 'chat_room#history'
+  # get '/chat/history/:room/:start_date/:end_date', to: 'chat_room#room_history'
+
   get '/chat/profile/:username', to: 'chat_room#profile'
 
   get '/chat/:room', to: 'chat_room#which_room'
 
   get '/leaderboard', to: 'chat_room#leaderboard'
-  get '/recent', to: 'chat_room#recent_users'
 
+  get '/recent', to: 'chat_room#recent_users'
   get '/recent/user/:time', to: "chat_room#recent_users"
   get '/recent/:time',  to: 'chat_room#index'
 
