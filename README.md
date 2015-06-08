@@ -81,8 +81,11 @@ shutdown, surely you can't be serious; chat_bot will respond appropriately.
 
 -------
 <a href="https://trello.com/b/ub26Hs6E/group-chat-program">Trello, Scrum Board</a>
-<a href="https://hackpad.com/Group-Chat-Program-UhniHRqodb5">Hackpad Group Chat Program notes</a>
 <a href="https://hackpad.com/Chat-Project-API-Kc89NodEFSo">Hackpad API notes</a>
+<a href="http://marina-r.github.io/projects/Chat-Room-Project/dist/index.html#Global">Chat program - courtesy of Marina</a>
+<a href="https://superamazingchat.herokuapp.com/">Chat Server API</a>
+
+
 
 
 ```
