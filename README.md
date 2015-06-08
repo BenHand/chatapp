@@ -82,10 +82,13 @@ shutdown, surely you can't be serious; chat_bot will respond appropriately.
 -------
 <p><a href="https://trello.com/b/ub26Hs6E/group-chat-program">Trello, Scrum Board
 </a></p>
+<p><a href="https://hackpad.com/Group-Chat-Program-UhniHRqodb5">Hackpad Chat Group notes
+</a>
+</p>
 <p><a href="https://hackpad.com/Chat-Project-API-Kc89NodEFSo">Hackpad API notes
 </a></p>
 
-<p><a href="http://marina-r.github.io/projects/Chat-Room-Project/dist/index.html#Global">Chat program - courtesy of Marina</a></p>
+<p><a href="http://marina-r.github.io/projects/Chat-Room-Project/dist/index.html">Chat program - courtesy of Marina</a></p>
 
 <p><a href="https://superamazingchat.herokuapp.com/">Chat Server API
 </a></p>
