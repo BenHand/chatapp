@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get '/chat/profile/:username', to: 'chat_room#profile'
 
   # getting all messages within specified room within specified time window
-  get '/chat/:room', to: 'chat_room#which_room'
+  get '/chat/:room/:time', to: 'chat_room#which_room'
 
   # getting top 10 users with message count
   get '/leaderboard', to: 'chat_room#leaderboard'
