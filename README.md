@@ -80,18 +80,27 @@ shutdown, surely you can't be serious; chat_bot will respond appropriately.
 <a href="https://rubygems.org/gems/swearjar">Swearjar</a> - ruby gem prevents cursing within chat room.
 
 -------
-<p><a href="https://trello.com/b/ub26Hs6E/group-chat-program">Trello, Scrum Board
-</a></p>
-<p><a href="https://hackpad.com/Group-Chat-Program-UhniHRqodb5">Hackpad Chat Group notes
-</a>
+<p>
+<a href="https://trello.com/b/ub26Hs6E/group-chat-program">Trello, Scrum Board</a>
 </p>
-<p><a href="https://hackpad.com/Chat-Project-API-Kc89NodEFSo">Hackpad API notes
-</a></p>
+<p>
+<a href="https://hackpad.com/Group-Chat-Program-UhniHRqodb5">Hackpad Chat Group notes</a>
+</p>
+<p>
+<a href="https://hackpad.com/Chat-Project-API-Kc89NodEFSo">Hackpad API notes</a>
+</p>
 
-<p><a href="http://marina-r.github.io/projects/Chat-Room-Project/dist/index.html">Chat program - courtesy of Marina</a></p>
+<p>
+<a href="http://marina-r.github.io/projects/Chat-Room-Project/dist/index.html">Chat program - courtesy of Marina</a>
+</p>
 
-<p><a href="https://superamazingchat.herokuapp.com/">Chat Server API
-</a></p>
+<p>
+<a href="https://github.com/Marina-R/Chat-Room-Project">Marina's github for Chat program</a>
+</p>
+
+<p>
+<a href="https://superamazingchat.herokuapp.com/">Chat Server API</a>
+</p>
 
 
 
