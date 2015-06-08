@@ -8,7 +8,7 @@
 * Clone this repo.
 * `bundle install` to install all gems required.
 * `rake db:migrate` to run the migration and update the database.
-* `rake db:seed` to populate your db with 50 randomly generated todos(via <a href="https://rubygems.org/gems/faker/versions/1.4.3">faker</a>).
+* `rake db:seed` to populate your db with 5 randomly generated messages(via <a href="https://rubygems.org/gems/faker/versions/1.4.3">faker</a>).
 * `rails s` to start your local server.
 
 ## Server URL and routes listed below with server responses.
